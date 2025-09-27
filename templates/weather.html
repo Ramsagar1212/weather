@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather App</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .card { background: #f4f4f4; padding: 20px; border-radius: 8px; width: 300px; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h2>🌤 Weather App</h2>
+    <form method="get">
+        <input type="text" name="city" placeholder="Enter city" required>
+        <button type="submit">Get Weather</button>
+    </form>
+
+    {% if weather %}
+        <div class="card">
+            <h3>{{ weather.city }}</h3>
+            <p><strong>Temperature:</strong> {{ weather.temperature }}°C</p>
+            <p><strong>Description:</strong> {{ weather.description }}</p>
+            <img src="http://openweathermap.org/img/wn/{{ weather.icon }}@2x.png" alt="Weather Icon">
+        </div>
+    {% elif error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+</body>
+</html>
